@@ -6,7 +6,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake")
 find_package(PkgConfig)
 pkg_search_module(TREE_SITTER REQUIRED tree-sitter)
 find_package(tree-sitter-json)
-
+message("found tree-sitter: ${TREE_SITTER_LIBRARIES}")
+message("found tree-sitter-json:  ${TREE_SITTER_JSON_LIBRARIES}")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -25,7 +26,8 @@ target_include_directories(tree_sitter_json_test
  PRIVATE
   ${TREE_SITTERINCLUDE_DIRS}
 )
+
 target_link_libraries(tree_sitter_json_test
-  ${TREE_SITTERLIBRARIES}
+  ${TREE_SITTER_LIBRARIES}
   ${TREE_SITTER_JSON_LIBRARIES}
 )
