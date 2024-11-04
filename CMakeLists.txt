@@ -13,9 +13,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
+set(NODE_STACK_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/node_stack.c
+)
+
 set(TREE_SITTER_JSON_TEST_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/tree_sitter_json_test.cpp
-  )
+)
+
+add_library(node_stack)
+target_sources(node_stack
+ PRIVATE
+  ${NODE_STACK_SOURCES}
+)
+target_include_directories(node_stack
+ PRIVATE
+  ${TREE_SITTERINCLUDE_DIRS}
+)
+target_link_libraries(node_stack
+  ${TREE_SITTER_LIBRARIES}
+)
 
 add_executable(tree_sitter_json_test)
 target_sources(tree_sitter_json_test
