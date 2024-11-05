@@ -11,24 +11,21 @@ bool push(NodeStack* stack, TSNode *node){
   return false;
 }
 
-TSNode* pop(NodeStack* stack){
-  TSNode *node = NULL;
-  return node;
-}
-
 bool is_empty(NodeStack* stack) {
   if(stack->top){
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 
-TSNode* top(NodeStack* stack){
+TSNode* pop(NodeStack* stack){
   TSNode* node = NULL;
   if(stack->top) {
     node = stack->arr[stack->top];
+    stack->top += -1;
+    return node;
   }
-  return node;
+  return NULL;
 }
 
 bool is_full(NodeStack* stack) {
