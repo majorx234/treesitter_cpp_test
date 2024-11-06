@@ -5,7 +5,7 @@
 bool push(NodeStack* stack, TSNode *node){
   if(stack->top < MAX_SIZE + 2){
     stack->top++;
-    stack->arr[stack->top] = node;
+    stack->arr[stack->top - 1] = node;
     return true;
   }
   return false;
@@ -21,7 +21,8 @@ bool is_empty(NodeStack* stack) {
 TSNode* pop(NodeStack* stack){
   TSNode* node = NULL;
   if(stack->top) {
-    node = stack->arr[stack->top];
+    node = stack->arr[stack->top - 1];
+    stack->arr[stack->top - 1] = NULL;
     stack->top += -1;
     return node;
   }
@@ -29,7 +30,7 @@ TSNode* pop(NodeStack* stack){
 }
 
 bool is_full(NodeStack* stack) {
-  if (stack->top == MAX_SIZE -2){
+  if (stack->top >= MAX_SIZE - 2){
     return true;
   }
   return false;
