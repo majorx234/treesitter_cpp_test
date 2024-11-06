@@ -43,7 +43,6 @@ target_include_directories(tree_sitter_json_test
  PRIVATE
   ${TREE_SITTERINCLUDE_DIRS}
 )
-
 target_link_libraries(tree_sitter_json_test
   ${TREE_SITTER_LIBRARIES}
   ${TREE_SITTER_JSON_LIBRARIES}
